@@ -1,12 +1,10 @@
 #
-# Solutions to working-with-text.ipynb
+# Solutions to exercises in lecture.ipynb
 #
 
 ##########################################
 # 1
 ##########################################
-
-
 
 def preprocess(s):
     return s.lower()
@@ -17,6 +15,8 @@ def search(docs, query):
         doc = preprocess(doc)
         if query in doc:
             return doc
+
+
 
 ##########################################
 # 2
@@ -60,9 +60,7 @@ def search(docs, query):
 # 3
 ##########################################
 
-
 from nltk.stem.snowball import SnowballStemmer
-
 stemmer = SnowballStemmer("english")
 not_alphanumeric_or_space = re.compile('[^(\w|\s|\d)]')
 
@@ -76,7 +74,6 @@ def preprocess(doc):
 ##########################################
 # 4
 ##########################################
-
 
 import numpy as np
 
@@ -95,7 +92,6 @@ def score(doc, query, docs):
 def search(docs, query):
     docs = [preprocess(doc) for doc in docs]
     query = preprocess(query)
-
     scores = [score(doc, query, docs) for doc in docs]
     tog = sorted(zip(docs, scores), key=lambda x: x[1])
     doc, _ = tog[-1]
